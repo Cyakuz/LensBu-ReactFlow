@@ -17,13 +17,13 @@
   cursor: pointer;
 }
 
-.button5 {
+.button-hamburger {
   background-color: white;
   color: black;
 
 }
 
-.button5:hover {
+.button-hamburger:hover {
   background-color: #555555;
   color: white;
 }

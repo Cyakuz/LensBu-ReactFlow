@@ -14,7 +14,7 @@ function Flow() {
      
       <Panel position="top-left" name="top-left">
       <div className="dropdown">
-      <button className="button button5">
+      <button className="button button-hamburger">
       <i className="fa-solid fa-bars" ></i>
       </button>
       <div class="dropdown-content">
