@@ -1,7 +1,6 @@
 import React from "react";
 import ReactFlow, { Controls, Background, Panel } from 'reactflow';
 import 'reactflow/dist/style.css';
-import Button from 'react-bootstrap/Button';
 
 
 
@@ -14,7 +13,16 @@ function Flow() {
      
      
       <Panel position="top-left" name="top-left">
-      <button class="button button5">Black</button>
+      <div className="dropdown">
+      <button className="button button5">
+      <i className="fa-solid fa-bars" ></i>
+      </button>
+      <div class="dropdown-content">
+        <a>Aksiyon 1</a>
+        <a>Aksiyon 2</a>
+        <a>Aksiyon 3</a>
+        </div>
+      </div>
       </Panel>
       
         <Background />
