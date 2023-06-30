@@ -4,16 +4,18 @@ import ReactFlow, {
   addEdge,
   useNodesState,
   useEdgesState,
-  Controls, Panel, Background,
+  Controls,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+
 import Sidebar from './Sidebar';
 
 
 const initialNodes = [
   {
     id: '1',
-    data: { label: 'Oyun İsmi' },
+    type: 'input',
+    data: { label: 'input node' },
     position: { x: 250, y: 5 },
   },
 ];
@@ -21,9 +23,7 @@ const initialNodes = [
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
-
-function Flow() {
-
+const Drag = () => {
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -64,12 +64,12 @@ function Flow() {
     [reactFlowInstance]
   );
 
-
   return (
-    <div className="dndflow" style={{ height: '100%' }}>
+    <div className="dndflow">
       <ReactFlowProvider>
-      <div className="reactflow-wrapper" ref={reactFlowWrapper}>
-      <ReactFlow nodes={nodes}
+        <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+          <ReactFlow
+            nodes={nodes}
             edges={edges}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
@@ -77,34 +77,15 @@ function Flow() {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            fitView>
-     
-     
-      <Panel position="top-left" name="top-left">
-      <div className="dropdown">
-      <button className="button button-hamburger">
-      <i className="fa-solid fa-bars" ></i>
-      </button>
-      <div class="dropdown-content">
-        <a>Aksiyon 1</a>
-        <a>Aksiyon 2</a>
-        <a>Aksiyon 3</a>
+            fitView
+          >
+            <Controls />
+          </ReactFlow>
         </div>
-      </div>
-      </Panel>
-      
-      
-
-        <Background />
-        <Controls />
-        
-      </ReactFlow>
-      </div>
-      <Sidebar />
-      
+        <Sidebar />
       </ReactFlowProvider>
     </div>
   );
-}
+};
 
-export default Flow;
+export default Drag;
