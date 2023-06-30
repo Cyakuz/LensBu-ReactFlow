@@ -1,7 +1,7 @@
 import React from "react";
 import ReactFlow, { Controls, Background, Panel } from 'reactflow';
 import 'reactflow/dist/style.css';
-
+import GameName from './GameName'
 
 
 function Flow() {
@@ -25,6 +25,7 @@ function Flow() {
       </div>
       </Panel>
       
+      <GameName/>
         <Background />
         <Controls />
         
