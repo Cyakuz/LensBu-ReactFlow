@@ -13,7 +13,7 @@ import TopLeftPanel from './TopLeftPanel';
 
 const initialNodes = [
   {
-    id: '1',
+    id: 'lesnbu_init',
     data: { label: 'Oyun İsmi' },
     position: { x: 250, y: 5 },
     style: {
@@ -30,7 +30,7 @@ const initialNodes = [
 ];
 
 let id = 0;
-const getId = () => `dndnode_${id++}`;
+const getId = () => `lensbu_${id++}`;
 
 
 function Flow() {
