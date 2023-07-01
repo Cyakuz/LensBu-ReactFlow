@@ -4,7 +4,7 @@ import ReactFlow, {
   addEdge,
   useNodesState,
   useEdgesState,
-  Controls, Panel, Background,
+  Controls, Background,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import Sidebar from './Sidebar';
@@ -16,6 +16,16 @@ const initialNodes = [
     id: '1',
     data: { label: 'Oyun İsmi' },
     position: { x: 250, y: 5 },
+    style: {
+      borderRadius: '100%',
+      backgroundColor: '#fff',
+      width: 50,
+      height: 50,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    
   },
 ];
 
@@ -59,6 +69,7 @@ function Flow() {
         position,
         data: { label: `${type} node` },
       };
+      console.log(newNode);
 
       setNodes((nds) => nds.concat(newNode));
     },
@@ -83,7 +94,7 @@ function Flow() {
               <TopLeftPanel />
               <Background />
               <Controls />
-        </ReactFlow>
+              </ReactFlow>
       </div>
       
       <Sidebar />
