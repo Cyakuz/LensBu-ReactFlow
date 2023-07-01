@@ -63,13 +63,15 @@
 
 
 .dndflow {
-  flex-direction: column;
+  flex-direction: row;
   display: flex;
   flex-grow: 1;
   height: 100%;
 }
 
 .dndflow aside {
+  width: 20%;
+  max-width: 250px;
   border-right: 1px solid #eee;
   padding: 15px 10px;
   font-size: 12px;
@@ -80,14 +82,20 @@
   margin-bottom: 10px;
 }
 
-.dndflow .dndnode {
-  height: 20px;
-  padding: 4px;
-  border: 1px solid #1a192b;
-  border-radius: 2px;
-  margin-bottom: 10px;
+.dndflow .nodes {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dndflow .dndnode {
+  height: 2rem;
+  width: 2rem;
+  padding: 4px;
+  border: 2px solid #1a192b;
+  border-radius: 100%;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   cursor: grab;
 }
@@ -109,13 +117,15 @@
   margin-top: 10px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 767px) {
   .dndflow {
-    flex-direction: row;
+    flex-direction: column;
   }
 
   .dndflow aside {
-    width: 20%;
-    max-width: 250px;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #eee;
   }
 }
+
