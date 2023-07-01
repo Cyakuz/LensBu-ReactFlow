@@ -47,6 +47,7 @@ function Flow() {
   const [nodeBg, setNodeBg] = useState('#eee');
   const [nodeHidden, setNodeHidden] = useState(false);
   const [selectedNodeId, setSelectedNodeId] = useState(null);
+  const [selectedNodeColor, setSelectedNodeColor] = useState('#eee');
 
   useEffect(() => {
     setNodes((nds) =>
@@ -65,21 +66,11 @@ function Flow() {
     );
   }, [nodeName, selectedNodeId, setNodes]);
 
-  useEffect(() => {
-    setNodes((nds) =>
-      nds.map((node) => {
-        if (node.id === '1') {
-          node.style = { ...node.style, backgroundColor: nodeBg };
-        }
-        return node;
-      })
-    );
-  }, [nodeBg, setNodes]);
 
   useEffect(() => {
     setNodes((nds) =>
       nds.map((node) => {
-        if (node.id === '1') {
+        if (node.id === selectedNodeId) {
           node.hidden = nodeHidden;
         }
         return node;
@@ -100,9 +91,9 @@ function Flow() {
 
     if (node.data && node.data.label) {
       setNodeName(node.data.label);
+      
     }
   };
-
 
 
 
