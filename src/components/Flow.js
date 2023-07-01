@@ -13,7 +13,7 @@ import {
   handleConnect,
   handleDragOver,
   handleDrop,
-} from './DnDHandler';
+} from '../handlers/DnDHandler';
 
 const initialNodes = [
   {
