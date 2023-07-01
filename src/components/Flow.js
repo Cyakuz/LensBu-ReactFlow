@@ -69,11 +69,14 @@ function Flow() {
         position,
         data: { label: `${type} node` },
       };
-      console.log(newNode);
+      
 
-      setNodes((nds) => nds.concat(newNode));
+      setNodes((nds) => {
+        const updatedNodes = nds.concat(newNode);
+        console.log("Updated Nodes: ", updatedNodes.map(({ id, data: { label } }) => ({ id, label }))); // For Future Node Modifikasyon.
+        return updatedNodes;
+      });
     },
-    [reactFlowInstance]
   );
 
 
