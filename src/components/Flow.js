@@ -8,6 +8,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import Sidebar from './Sidebar';
+import TopLeftPanel from './TopLeftPanel';
 
 
 const initialNodes = [
@@ -77,29 +78,14 @@ function Flow() {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            fitView>
-     
-     
-      <Panel position="top-left" name="top-left">
-      <div className="dropdown">
-      <button className="button button-hamburger">
-      <i className="fa-solid fa-bars" ></i>
-      </button>
-      <div class="dropdown-content">
-        <a>Aksiyon 1</a>
-        <a>Aksiyon 2</a>
-        <a>Aksiyon 3</a>
-        </div>
+            fitView
+            >
+              <TopLeftPanel />
+              <Background />
+              <Controls />
+        </ReactFlow>
       </div>
-      </Panel>
       
-      
-
-        <Background />
-        <Controls />
-        
-      </ReactFlow>
-      </div>
       <Sidebar />
       
       </ReactFlowProvider>
