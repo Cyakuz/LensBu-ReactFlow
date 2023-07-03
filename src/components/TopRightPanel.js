@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Panel } from 'reactflow';
+import Button from 'react-bootstrap/Button';
 
 function TopRightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden }) {
   const [isPanelVisible, setIsPanelVisible] = useState(false);
@@ -16,9 +17,10 @@ function TopRightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden }) {
     setNodeHidden(event.target.checked);
   };
 
-  return (
+  return (<>
     <Panel position="top-right" name="top-right">
-      <div className="toprightpanel">
+      <ul>
+      <div>
         <i className="fa-solid fa-pen-nib" onClick={togglePanelVisibility}>
         </i>
         {isPanelVisible && (
@@ -41,7 +43,14 @@ function TopRightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden }) {
           </div>
         )}
       </div>
+      <div>
+      <i className="fa-solid fa-pen-nib">
+        </i>
+      </div>
+      </ul>
     </Panel>
+
+    </>
   );
 }
 
