@@ -1,20 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import ReactFlow, {
-  ReactFlowProvider,
-  useNodesState,
-  useEdgesState,
-  Controls,
-  Background,
-} from 'reactflow';
+import ReactFlow, { ReactFlowProvider, useNodesState, useEdgesState, Controls,Background,} from 'reactflow';
 import 'reactflow/dist/style.css';
 import Sidebar from './Sidebar';
 import TopLeftPanel from './TopLeftPanel';
 import TopRightPanel from './TopRightPanel';
-import {
-  handleConnect,
-  handleDragOver,
-  handleDrop,
-} from '../handlers/DnDHandler';
+import { handleConnect, handleDragOver, handleDrop, } from '../handlers/DnDHandler';
+import { handleNodeUpdate } from '../handlers//UpdateHandler';
 
 const initialNodes = [
   {
@@ -47,7 +38,14 @@ function Flow() {
   const [nodeBg, setNodeBg] = useState('#eee');
   const [nodeHidden, setNodeHidden] = useState(false);
   const [selectedNodeId, setSelectedNodeId] = useState(null);
-  const [selectedNodeColor, setSelectedNodeColor] = useState('#eee');
+
+  const handleNodeClick = (event, node) => {
+    setSelectedNodeId(node.id);
+
+    if (node.data && node.data.label) {
+      setNodeName(node.data.label);
+    }
+  };
 
   useEffect(() => {
     setNodes((nds) =>
@@ -66,34 +64,9 @@ function Flow() {
     );
   }, [nodeName, selectedNodeId, setNodes]);
 
-
   useEffect(() => {
-    setNodes((nds) =>
-      nds.map((node) => {
-        if (node.id === selectedNodeId) {
-          node.hidden = nodeHidden;
-        }
-        return node;
-      })
-    );
-    setEdges((eds) =>
-      eds.map((edge) => {
-        if (edge.id === 'e1-2') {
-          edge.hidden = nodeHidden;
-        }
-        return edge;
-      })
-    );
-  }, [nodeHidden, setNodes, setEdges]);
-
-  const handleNodeClick = (event, node) => {
-    setSelectedNodeId(node.id);
-
-    if (node.data && node.data.label) {
-      setNodeName(node.data.label);
-      
-    }
-  };
+    handleNodeUpdate(nodes, setNodes, edges, setEdges, selectedNodeId, nodeName, nodeHidden);
+  }, [nodeName, selectedNodeId, nodeHidden]);
 
 
 
@@ -134,3 +107,4 @@ function Flow() {
 }
 
 export default Flow;
+
