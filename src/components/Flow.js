@@ -48,23 +48,6 @@ function Flow() {
   };
 
   useEffect(() => {
-    setNodes((nds) =>
-      nds.map((node) => {
-        if (node.id === selectedNodeId) {
-          return {
-            ...node,
-            data: {
-              ...node.data,
-              label: nodeName,
-            },
-          };
-        }
-        return node;
-      })
-    );
-  }, [nodeName, selectedNodeId, setNodes]);
-
-  useEffect(() => {
     handleNodeUpdate(nodes, setNodes, edges, setEdges, selectedNodeId, nodeName, nodeHidden);
   }, [nodeName, selectedNodeId, nodeHidden]);
 
