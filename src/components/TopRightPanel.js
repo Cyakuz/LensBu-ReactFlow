@@ -19,6 +19,8 @@ function TopRightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNod
 
   const handleDeleteNode = () => {
     onNodesChange([{ type: 'remove', id: selectedNodeId }]);
+    const nodeInfo = nodes.map((node) => ({ id: node.id, label: node.data.label }));
+  console.log('Existing Nodes:', nodeInfo); //for future use
   };
 
   return (
