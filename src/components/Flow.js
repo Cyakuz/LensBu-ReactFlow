@@ -47,6 +47,8 @@ function Flow() {
     }
   };
 
+  
+
   useEffect(() => {
     handleNodeUpdate(nodes, setNodes, edges, setEdges, selectedNodeId, nodeName, nodeHidden);
   }, [nodeName, selectedNodeId, nodeHidden]);
@@ -70,14 +72,15 @@ function Flow() {
             attributionPosition="bottom-left"
             onNodeClick={handleNodeClick}
           >
-             <TopRightPanel
-    nodeName={nodeName}
-    nodeBg={nodeBg}
-    nodeHidden={nodeHidden}
-    setNodeName={setNodeName}
-    setNodeBg={setNodeBg}
-    setNodeHidden={setNodeHidden}
-  />
+            <TopRightPanel
+  nodeName={nodeName}
+  nodeHidden={nodeHidden}
+  setNodeName={setNodeName}
+  setNodeHidden={setNodeHidden}
+  onNodesChange={onNodesChange}
+  nodes={nodes}
+  selectedNodeId={selectedNodeId}
+/>
             <TopLeftPanel />
             <Background />
             <Controls />
