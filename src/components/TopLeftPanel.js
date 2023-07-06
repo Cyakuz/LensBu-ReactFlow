@@ -12,7 +12,7 @@ function TopLeftPanel() {
 
     
           <a className="d-flex align-items-center" href="/">
-          <i class="fa-solid fa-microscope fa-xl"></i>
+          <i className="fa-solid fa-microscope fa-xl"></i>
   <div className="fs-6 font-monospace ms-2">Oyun Alanı</div>
 </a>
          
