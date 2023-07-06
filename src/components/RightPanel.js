@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import { Panel } from 'reactflow';
-import {getId} from '../handlers/DnDHandler.js'
+import { getId } from '../handlers/DnDHandler.js';
 
-function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesChange, nodes, selectedNodeId }) 
-{
+function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesChange, nodes, selectedNodeId }) {
   // STATES
   const [isPanelVisible, setIsPanelVisible] = useState(false);
+  const [areExtraIconsVisible, setAreExtraIconsVisible] = useState(false);
+
   const togglePanelVisibility = () => {
     setIsPanelVisible((prevVisibility) => !prevVisibility);
   };
+
+  const toggleExtraIconsVisibility = () => {
+    setAreExtraIconsVisible((prevVisibility) => !prevVisibility);
+  };
   // STATES
+
   // HANDLERS
   const handleNameChange = (event) => {
     setNodeName(event.target.value);
@@ -22,7 +28,7 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
   const handleDeleteNode = () => {
     onNodesChange([{ type: 'remove', id: selectedNodeId }]);
     const nodeInfo = nodes.map((node) => ({ id: node.id, label: node.data.label }));
-  console.log('Existing Nodes:', nodeInfo); //for future use
+    console.log('Existing Nodes:', nodeInfo); // for future use
   };
 
   const handleAddNode = () => {
@@ -33,9 +39,10 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
     };
     onNodesChange([{ type: 'add', item: newNode }]);
     const nodeInfo = nodes.map((node) => ({ id: node.id, label: node.data.label }));
-  console.log('Existing Nodes:', nodeInfo); //for future use
+    console.log('Existing Nodes:', nodeInfo); // for future use
   };
-  //HANDLERS
+  // HANDLERS
+
   // RETURN
   return (
     <>
@@ -59,19 +66,40 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
               </div>
             )}
           </div>
-          <br/>
+          <br />
 
           <div>
-          <i class="fa-solid fa-plug fa-xl" onClick={handleAddNode}></i>
+            <i className="fa-solid fa-plug fa-xl" onClick={toggleExtraIconsVisibility}></i>
           </div>
 
-          <br/>
+          {areExtraIconsVisible && (
+            <div className="border p-1 mt-4 rounded flex ">
+
+              <div>
+              <i class="fa-solid fa-cloud-moon-rain fa-lg" onClick={handleAddNode}></i>
+              </div>
+
+              <br />
+
+              <div>
+              <i class="fa-solid fa-masks-theater fa-lg" onClick={handleAddNode}></i>
+              </div>
+
+              <br />
+
+              <div>
+              <i class="fa-solid fa-timeline fa-lg" onClick={handleAddNode}></i>
+              </div>
+            </div>
+          )}
+
+          <br />
 
           <div>
             <i className="fa-solid fa-trash fa-xl" onClick={handleDeleteNode}></i>
           </div>
-          
-          <br/>
+
+          <br />
         </ul>
       </Panel>
       <Panel position="bottom-right" name="bottom-right">
@@ -87,7 +115,8 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
     </>
   );
 }
-//RETURN
-//EXPORTS
+// RETURN
+
+// EXPORTS
 export default RightPanel;
-//EXPORT
+// EXPORT
