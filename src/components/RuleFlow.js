@@ -84,7 +84,7 @@ function Flow() {
   nodes={nodes}
   selectedNodeId={selectedNodeId}
 />
-            <TopLeftPanel />
+            <TopLeftPanel  nodes={nodes}/>
             <Background />
             <Controls />
           </ReactFlow>

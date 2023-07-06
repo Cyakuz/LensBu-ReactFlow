@@ -1,7 +1,22 @@
 import React from 'react';
 import { Panel } from 'reactflow';
 
-function TopLeftPanel() {
+
+
+function TopLeftPanel(nodes, ) {
+
+  const handleSave = () => {
+    const nodeInfo = nodes;
+    const jsonData = JSON.stringify(nodeInfo, null, 2);
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'lensbu_oyunalaniniz.json';
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+  
   return (
     <Panel position="top-left" name="top-left">
       <div className="dropdown">
@@ -21,7 +36,7 @@ function TopLeftPanel() {
   <div className="fs-6 font-monospace ms-2">Kurallar</div>
 </a>
 
-        <a className="d-flex align-items-center">
+        <a className="d-flex align-items-center" onClick={handleSave}>
   <i className="fa-solid fa-file-export fa-xl"></i>
   <div className="fs-6 font-monospace ms-2"> Kaydet</div>
         </a>

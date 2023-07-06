@@ -39,8 +39,10 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
     };
     onNodesChange([{ type: 'add', item: newNode }]);
     const nodeInfo = nodes.map((node) => ({ id: node.id, label: node.data.label }));
-    console.log('Existing Nodes:', nodeInfo); // for future use
+   
   };
+
+
   // HANDLERS
 
   // RETURN
@@ -76,20 +78,21 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
             <div className="border p-1 mt-4 rounded flex ">
 
               <div>
-              <i class="fa-solid fa-cloud-moon-rain fa-lg" onClick={handleAddNode}></i>
+              <i className="fa-solid fa-cloud-moon-rain fa-lg" onClick={handleAddNode}></i>
               </div>
 
               <br />
 
               <div>
-              <i class="fa-solid fa-masks-theater fa-lg" onClick={handleAddNode}></i>
+              <i className="fa-solid fa-masks-theater fa-lg" onClick={handleAddNode}></i>
               </div>
 
               <br />
 
               <div>
-              <i class="fa-solid fa-timeline fa-lg" onClick={handleAddNode}></i>
+              <i className="fa-solid fa-timeline fa-lg" onClick={handleAddNode}></i>
               </div>
+
             </div>
           )}
 
