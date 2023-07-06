@@ -15,10 +15,7 @@ const initialNodes = [
     data: { label: 'Oyun İsmi' },
     position: { x: 250, y: 5 },
     style: {
-      borderRadius: '100%',
       backgroundColor: '#fff',
-      width: 50,
-      height: 50,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',

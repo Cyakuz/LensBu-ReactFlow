@@ -10,6 +10,17 @@ function TopLeftPanel() {
         </button>
         <div className="dropdown-content">
 
+    
+          <a className="d-flex align-items-center" href="/">
+          <i class="fa-solid fa-microscope fa-xl"></i>
+  <div className="fs-6 font-monospace ms-2">Oyun Alanı</div>
+</a>
+         
+          <a className="d-flex align-items-center" href="/kurallar">
+  <i className="fa-solid fa-book-skull fa-xl"></i>
+  <div className="fs-6 font-monospace ms-2">Kurallar</div>
+</a>
+
         <a className="d-flex align-items-center">
   <i className="fa-solid fa-file-export fa-xl"></i>
   <div className="fs-6 font-monospace ms-2"> Kaydet</div>
@@ -21,10 +32,8 @@ function TopLeftPanel() {
   <div className="fs-6 font-monospace ms-2"> Yükle</div>
         </a>
           </div>
-          <a className="d-flex align-items-center" href="/kurallar">
-  <i className="fa-solid fa-book-skull fa-xl"></i>
-  <div className="fs-6 font-monospace ms-2">Kurallar</div>
-</a>
+          
+
         </div>
       </div>
     </Panel>
