@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Panel } from 'reactflow';
 import {getId} from '../handlers/DnDHandler.js'
 
-function TopRightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesChange, nodes, selectedNodeId }) {
+function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesChange, nodes, selectedNodeId }) {
   const [isPanelVisible, setIsPanelVisible] = useState(false);
 
   const togglePanelVisibility = () => {
@@ -67,13 +67,22 @@ function TopRightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNod
           <div>
             <i className="fa-solid fa-trash fa-xl" onClick={handleDeleteNode}></i>
           </div>
-
-        
-         
+          
+          <br/>
         </ul>
       </Panel>
+      <Panel position="bottom-right" name="bottom-right">
+      <div>
+          <i class="fa-solid fa-file-export fa-xl"></i>
+          </div>
+
+          <br/>
+          <div>
+          <i class="fa-solid fa-upload fa-xl"></i>
+          </div>
+          </Panel>
     </>
   );
 }
 
-export default TopRightPanel;
+export default RightPanel;

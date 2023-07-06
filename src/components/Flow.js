@@ -3,7 +3,7 @@ import ReactFlow, { ReactFlowProvider, useNodesState, useEdgesState, Controls,Ba
 import 'reactflow/dist/style.css';
 import Sidebar from './Sidebar';
 import TopLeftPanel from './TopLeftPanel';
-import TopRightPanel from './TopRightPanel';
+import RightPanel from './RightPanel';
 import { handleConnect, handleDragOver, handleDrop, } from '../handlers/DnDHandler';
 import { handleNodeUpdate } from '../handlers//UpdateHandler';
 
@@ -72,7 +72,7 @@ function Flow() {
             attributionPosition="bottom-left"
             onNodeClick={handleNodeClick}
           >
-            <TopRightPanel
+            <RightPanel
   nodeName={nodeName}
   nodeHidden={nodeHidden}
   setNodeName={setNodeName}
