@@ -102,16 +102,7 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
           <br />
         </ul>
       </Panel>
-      <Panel position="bottom-right" name="bottom-right">
-      <div>
-          <i class="fa-solid fa-file-export fa-xl"></i>
-          </div>
-
-          <br/>
-          <div>
-          <i class="fa-solid fa-upload fa-xl"></i>
-          </div>
-          </Panel>
+  
     </>
   );
 }

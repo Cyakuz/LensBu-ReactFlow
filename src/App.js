@@ -1,12 +1,23 @@
 import React from "react";
 import "./style.css";
-import Flow from './components/Flow'
+import Kurallar from "./scenes/Kurallar";
+import Oyun from "./scenes/Oyun";
+import { BrowserRouter } from 'react-router-dom';
+import {Routes, Route} from "react-router-dom";
+
 <script src="https://kit.fontawesome.com/66ffc5668c.js" crossorigin="anonymous"></script>
 
 export default function App() {
   return (
     <>
-      <Flow/>
+
+
+      <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Oyun/>} />
+            <Route path='/kurallar' element={<Kurallar/>} />
+          </Routes>
+    </BrowserRouter>
       
     </>
   );

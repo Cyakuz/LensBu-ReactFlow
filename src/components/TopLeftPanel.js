@@ -9,9 +9,22 @@ function TopLeftPanel() {
           <i className="fa-solid fa-bars"></i>
         </button>
         <div className="dropdown-content">
-          <a>Aksiyon 1</a>
-          <a>Aksiyon 2</a>
-          <a>Aksiyon 3</a>
+
+        <a className="d-flex align-items-center">
+  <i className="fa-solid fa-file-export fa-xl"></i>
+  <div className="fs-6 font-monospace ms-2"> Kaydet</div>
+        </a>
+    
+          <div>
+          <a className="d-flex align-items-center">
+  <i className="fa-solid fa-file-upload fa-xl"></i>
+  <div className="fs-6 font-monospace ms-2"> Yükle</div>
+        </a>
+          </div>
+          <a className="d-flex align-items-center" href="/kurallar">
+  <i className="fa-solid fa-book-skull fa-xl"></i>
+  <div className="fs-6 font-monospace ms-2">Kurallar</div>
+</a>
         </div>
       </div>
     </Panel>
