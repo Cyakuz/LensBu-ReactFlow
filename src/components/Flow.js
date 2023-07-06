@@ -1,3 +1,4 @@
+// IMPORTS START
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import ReactFlow, { ReactFlowProvider, useNodesState, useEdgesState, Controls,Background,} from 'reactflow';
 import 'reactflow/dist/style.css';
@@ -6,7 +7,8 @@ import TopLeftPanel from './TopLeftPanel';
 import RightPanel from './RightPanel';
 import { handleConnect, handleDragOver, handleDrop, } from '../handlers/DnDHandler';
 import { handleNodeUpdate } from '../handlers//UpdateHandler';
-
+// IMPORTS END
+//NODE INIT: GAME NAME FIX NODE START
 const initialNodes = [
   {
     id: 'lesnbu_init',
@@ -23,38 +25,35 @@ const initialNodes = [
     },
   },
 ];
- 
+//NODE INIT: GAME NAME FIX NODE END
+// FLOW FUNCTION : REACT-FLOW CANVAS INIT FUNCTION
 function Flow() {
+  //INIT START: NODES, EDGES, WRAPPER, INSTANCE
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-
+  // INIT END
+  // DRAG AND DROP START
   const onConnect = useCallback(handleConnect(nodes, setEdges), [nodes, setEdges]);
-
-
-
-  const [nodeName, setNodeName] = useState('Node 1');
-  const [nodeBg, setNodeBg] = useState('#eee');
+  // DRAG AND DROP END
+  // UPDATE NODE HANDLER START
+  const [nodeName, setNodeName] = useState('Periyot, olay yada sahne seçimi yapın!');
   const [nodeHidden, setNodeHidden] = useState(false);
   const [selectedNodeId, setSelectedNodeId] = useState(null);
 
   const handleNodeClick = (event, node) => {
     setSelectedNodeId(node.id);
-
     if (node.data && node.data.label) {
       setNodeName(node.data.label);
     }
   };
 
-  
-
   useEffect(() => {
     handleNodeUpdate(nodes, setNodes, edges, setEdges, selectedNodeId, nodeName, nodeHidden);
   }, [nodeName, selectedNodeId, nodeHidden]);
-
-
-
+  //UPDATE NODE HANDLER END
+  // FUNCTIONS AND VARIABLES END - NOW RETURN FLOWPROVIDER
   return (
     <div className="dndflow" style={{ height: '100%' }}>
       <ReactFlowProvider>
@@ -91,6 +90,8 @@ function Flow() {
     </div>
   );
 }
-
+//RETURN END
+// FLOW FUNCTION : REACT-FLOW CANVAS INIT FUNCTION- END
+// EXPORTS
 export default Flow;
-
+// EXPORTS END

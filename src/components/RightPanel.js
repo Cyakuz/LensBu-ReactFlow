@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { Panel } from 'reactflow';
 import {getId} from '../handlers/DnDHandler.js'
 
-function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesChange, nodes, selectedNodeId }) {
+function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesChange, nodes, selectedNodeId }) 
+{
+  // STATES
   const [isPanelVisible, setIsPanelVisible] = useState(false);
-
   const togglePanelVisibility = () => {
     setIsPanelVisible((prevVisibility) => !prevVisibility);
   };
-
+  // STATES
+  // HANDLERS
   const handleNameChange = (event) => {
     setNodeName(event.target.value);
   };
@@ -33,7 +35,8 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
     const nodeInfo = nodes.map((node) => ({ id: node.id, label: node.data.label }));
   console.log('Existing Nodes:', nodeInfo); //for future use
   };
-
+  //HANDLERS
+  // RETURN
   return (
     <>
       <Panel position="top-right" name="top-right">
@@ -84,5 +87,7 @@ function RightPanel({ nodeName, nodeHidden, setNodeName, setNodeHidden, onNodesC
     </>
   );
 }
-
+//RETURN
+//EXPORTS
 export default RightPanel;
+//EXPORT
