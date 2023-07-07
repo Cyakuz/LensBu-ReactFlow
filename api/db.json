@@ -1,0 +1,12 @@
+{ "nodes": [
+    {
+    "id": "lesnbu_init",
+    "data": { "label": "Oyun İsmi" },
+    "position": { "x": 250, "y": 5 },
+    "style": {
+      "backgroundColor": "#fff",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center"
+    }}]
+  }
