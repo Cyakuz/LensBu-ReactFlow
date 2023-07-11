@@ -7,6 +7,8 @@ import TopLeftPanel from './TopLeftPanel';
 import RightPanel from './RightPanel';
 import { handleConnect, handleDragOver, handleDrop, } from '../handlers/DnDHandler';
 import { handleNodeUpdate } from '../handlers//UpdateHandler';
+import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // IMPORTS END
 //NODE INIT: GAME NAME FIX NODE START
 const initialNodes = [
@@ -25,12 +27,33 @@ const initialNodes = [
 //NODE INIT: GAME NAME FIX NODE END
 // FLOW FUNCTION : REACT-FLOW CANVAS INIT FUNCTION
 function Flow() {
+  const { id, userid } = useParams();
   //INIT START: NODES, EDGES, WRAPPER, INSTANCE
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   // INIT END
+  const location = useLocation();
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    const userId = '123'; // Replace with the actual user ID
+    const isIdRoute = location.pathname.startsWith('/id/');
+    if (isIdRoute) {
+      fetch(`/api/nodes/${userId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setNodes(data.nodes);
+        })
+        .catch((error) => {
+          console.log('Error fetching initial nodes:', error);
+          setError(true); // Set error state to true
+        });
+    } else {
+      setNodes(initialNodes);
+    }
+  }, [location.pathname]);
+ 
   // DRAG AND DROP START
   const onConnect = useCallback(handleConnect(nodes, setEdges), [nodes, setEdges]);
   // DRAG AND DROP END
